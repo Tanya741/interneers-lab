@@ -8,12 +8,15 @@ from django.http import JsonResponse
 #     return HttpResponse("Hi Everyone! Nice to meet you all.")
 
 
-def hello_name(request):
-    name= request.GET.get("name", "World")
-    return JsonResponse({"message": f"Hello, {name}!"})
+def user_info(request):
+    name= request.GET.get("name", "Sir/Mam")
+    age= request.GET.get("age")
+    Id= request.GET.get("id")
+
+    return JsonResponse({"message": f"Hello, {name}!, age: {age}, id: {Id}"})
      
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello_name),
+    path('hello/', user_info),
 ]
